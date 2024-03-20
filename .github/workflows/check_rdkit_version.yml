@@ -45,4 +45,4 @@ jobs:
           commit-message: "Set RDKix version to ${{ steps.tags.outputs.new_tag }}"
           body: |
             New RDKix version tag detected in https://github.com/rdkix/rdkix.
-          reviewers: kuelumbus
+          
