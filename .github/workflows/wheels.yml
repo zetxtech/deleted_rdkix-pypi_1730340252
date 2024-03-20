@@ -125,7 +125,7 @@ jobs:
       - name: Copy to C:\
         if: ${{ runner.os == 'Windows' }}
         run: |
-          Copy-Item -Path D:\a\rdkix\rdkix -Destination C:\rdkix -Recurse
+          Copy-Item -Path D:\a\rdkix-pypi\rdkix-pypi -Destination C:\rdkix -Recurse
 
       - uses: actions/setup-python@v4
         name: Install Python
