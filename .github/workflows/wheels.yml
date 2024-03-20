@@ -3,8 +3,9 @@ name: Build wheels
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, rename ]
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: write
