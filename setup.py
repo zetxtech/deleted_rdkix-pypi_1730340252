@@ -347,7 +347,7 @@ class BuildRDKix(build_ext_orig):
 
 setup(
     name="rdkix",
-    version=rdkix_tag.replace("Release_", "").replace("_", "."),
+    version=rdkix_tag.replace("Release_", "").replace("_", ".") + '.post1',
     description="A collection of chemoinformatics and machine-learning software written in C++ and Python",
     author="Christopher Kuenneth",
     author_email="chris@kuenneth.dev",
