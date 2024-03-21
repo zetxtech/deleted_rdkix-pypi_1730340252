@@ -12,7 +12,7 @@ from setuptools import Extension, find_packages, setup
 from setuptools.command.build_ext import build_ext as build_ext_orig
 
 # RDKix version to build (tag from github repository)
-rdkix_tag = "Release_2023_09_5"
+rdkix_tag = "Release_2023_09_4"
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -347,7 +347,7 @@ class BuildRDKix(build_ext_orig):
 
 setup(
     name="rdkix",
-    version=rdkix_tag.replace("Release_", "").replace("_", ".") + '.post1',
+    version=rdkix_tag.replace("Release_", "").replace("_", "."),
     description="A collection of chemoinformatics and machine-learning software written in C++ and Python",
     author="Christopher Kuenneth",
     author_email="chris@kuenneth.dev",
