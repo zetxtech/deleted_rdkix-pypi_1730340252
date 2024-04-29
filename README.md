@@ -46,7 +46,7 @@ poetry run python -c "from rdkix import Chem; print(Chem.MolToMolBlock(Chem.MolF
 ```bash
 python3 -m pip install cibuildwheel
 
-git clone https://github.com/kuelumbus/rdkix-pypi.git
+git clone https://github.com/rdkix/rdkix-pypi.git
 cd rdkix-pypi
 
 CIBW_BUILD=cp38-manylinux_x86_64 python3 -m cibuildwheel --platform linux --output-dir wheelhouse --config-file pyproject.toml
