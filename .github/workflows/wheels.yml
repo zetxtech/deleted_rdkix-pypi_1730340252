@@ -120,10 +120,6 @@ jobs:
             bitness: 64
             python: 311
             platform_id: macosx_arm64
-          - os: macos-12
-            bitness: 64
-            python: 37
-            platform_id: macosx_arm64
 
     steps:
       - uses: actions/checkout@v4
