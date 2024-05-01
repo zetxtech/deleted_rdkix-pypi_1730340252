@@ -1,12 +1,12 @@
 
-name: Test rdkit-pypi from PyPi
+name: Test rdkix from PyPi
 
 on:
   workflow_dispatch:
 
 jobs:
   build_wheels:
-    name: Test rdkit-pypi from pypi
+    name: Test rdkix from pypi
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -25,7 +25,7 @@ jobs:
         run: |
           python --version
           python -m ensurepip --upgrade
-          python -m pip install rdkit-pypi
+          python -m pip install rdkix
 
       - name: Run tests
         run: |

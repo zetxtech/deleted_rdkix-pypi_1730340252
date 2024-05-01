@@ -1,4 +1,4 @@
-name: Check for new RDKit tags
+name: Check for new RDKix tags
 on:
   schedule:
     # https://crontab.guru/every-night-at-midnight
@@ -10,25 +10,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Check out RDKit repo
+      - name: Check out RDKix repo
         uses: actions/checkout@v3
         with:
-          repository: rdkit/rdkit
-          path: rdkit
+          repository: rdkix/rdkix
+          path: rdkix
           fetch-depth: 0
 
       - name: Get most tags and compare
         id: tags
         shell: bash
         run: |
-          current_tag=$(grep rdkit_tag setup.py | head -1 | xargs -n 1 | tail -1)
-          cd rdkit
+          current_tag=$(grep rdkix_tag setup.py | head -1 | xargs -n 1 | tail -1)
+          cd rdkix
           new_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
           cd ..
-          rm -fr rdkit
+          rm -fr rdkix
           echo "changed=false" >> $GITHUB_OUTPUT
           if [[ "$new_tag" != "$current_tag" ]]; then
-          sed -i "s/rdkit_tag =.*/rdkit_tag = \"$new_tag\"/g" setup.py
+          sed -i "s/rdkix_tag =.*/rdkix_tag = \"$new_tag\"/g" setup.py
           echo "changed=true" >> $GITHUB_OUTPUT
           echo "new_tag=${new_tag}" >> $GITHUB_OUTPUT
           fi
@@ -39,10 +39,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          title: "🤖 Bump RDKit version to ${{ steps.tags.outputs.new_tag }}"
-          branch: "bump-rdkit-${{ steps.tags.outputs.new_tag }}"
+          title: "🤖 Bump RDKix version to ${{ steps.tags.outputs.new_tag }}"
+          branch: "bump-rdkix-${{ steps.tags.outputs.new_tag }}"
           path: "./"
-          commit-message: "Set RDKit version to ${{ steps.tags.outputs.new_tag }}"
+          commit-message: "Set RDKix version to ${{ steps.tags.outputs.new_tag }}"
           body: |
-            New RDKit version tag detected in https://github.com/rdkit/rdkit.
+            New RDKix version tag detected in https://github.com/rdkix/rdkix.
           reviewers: kuelumbus
