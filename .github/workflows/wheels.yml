@@ -124,7 +124,7 @@ jobs:
       - name: Copy to C:\
         if: ${{ runner.os == 'Windows' }}
         run: |
-          Copy-Item -Path D:\a\rdkit-pypi\rdkit-pypi -Destination C:\rdkit -Recurse
+          Copy-Item -Path D:\a\rdkix-pypi\rdkix-pypi -Destination C:\rdkix -Recurse
 
       - uses: actions/setup-python@v4
         name: Install Python
@@ -134,7 +134,7 @@ jobs:
       - name: Install libraries with vcpkg
         if: ${{ runner.os == 'Windows' }}
         run: |
-          cd C:\\rdkit
+          cd C:\\rdkix
           vcpkg --triplet x64-windows install
 
       - name: Install libraries with chocolatey
@@ -153,7 +153,7 @@ jobs:
 
         run: |
           if [ "$RUNNER_OS" == "Windows" ]; then
-            cd C:\\rdkit
+            cd C:\\rdkix
           fi
           python -m pip install cibuildwheel==2.16.2
           python -m cibuildwheel --output-dir wheelhouse
@@ -162,7 +162,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         if: ${{ runner.os == 'Windows' }}
         with:
-          path: C:\rdkit\wheelhouse\*.whl
+          path: C:\rdkix\wheelhouse\*.whl
 
       - uses: actions/upload-artifact@v3
         if: ${{ runner.os != 'Windows' }}
