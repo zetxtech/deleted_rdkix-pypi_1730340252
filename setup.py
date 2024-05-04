@@ -153,7 +153,7 @@ class BuildRDKix(build_ext_orig):
                 ["git", "config", "--global", "user.name", '"Your Name"']
             )
             check_call(
-                ["git", "remote", "add", "upstream", "git@github.com:rdkit/rdkit.git"]
+                ["git", "remote", "add", "upstream", "https://github.com/rdkit/rdkit.git"]
             )
             check_call(
                 ["git", "fetch", "upstream", "pull/6485/head:fix_win_py_install"]
