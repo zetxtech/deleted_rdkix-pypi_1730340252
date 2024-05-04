@@ -152,9 +152,11 @@ class BuildRDKix(build_ext_orig):
             check_call(
                 ["git", "config", "--global", "user.name", '"Your Name"']
             )
-            
             check_call(
-                ["git", "fetch", "origin", "pull/6485/head:fix_win_py_install"]
+                ["git", "remote", "add", "upstream", "git@github.com:rdkit/rdkit.git"]
+            )
+            check_call(
+                ["git", "fetch", "upstream", "pull/6485/head:fix_win_py_install"]
             )
             check_call(
                 ["git", "cherry-pick", "91a1ce03424d2924acb5659561604ada9545bfb4"]
