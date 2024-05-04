@@ -3,11 +3,13 @@ name: Build wheels
 
 on: 
   push:
-    branches:
-      - '**'
-  pull_request:
-    types: [opened, reopened]
-
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        type: boolean
+        description: 'Run the build with tmate debugging enabled.'
+        required: false
+        default: false
 
 jobs:
   build_wheels:
@@ -19,6 +21,10 @@ jobs:
         include:
           # Window 64 bit
           - os: windows-2022
+            python: 37
+            bitness: 64
+            platform_id: win_amd64
+          - os: windows-2022
             python: 38
             bitness: 64
             platform_id: win_amd64
@@ -32,11 +38,20 @@ jobs:
             platform_id: win_amd64
           - os: windows-2022
             python: 311
+            bitness: 64
+            platform_id: win_amd64
+          - os: windows-2022
+            python: 312
             bitness: 64
             platform_id: win_amd64
 
           # Linux 64 bit Intel: x86_64
           - os: ubuntu-latest
+            python: 37
+            bitness: 64
+            platform_id: manylinux_x86_64
+            manylinux_image: manylinux2014
+          - os: ubuntu-latest
             python: 38
             bitness: 64
             platform_id: manylinux_x86_64
@@ -56,12 +71,23 @@ jobs:
             bitness: 64
             platform_id: manylinux_x86_64
             manylinux_image: manylinux2014
+          - os: ubuntu-latest
+            python: 312
+            bitness: 64
+            platform_id: manylinux_x86_64
+            manylinux_image: manylinux2014
+
 
           # Linux 64 bit ARM: aarch64 (on Circle CI)
+
 
           # MacOS 64 bit Intel: x86_64
           - os: macos-11
             bitness: 64
+            python: 37
+            platform_id: macosx_x86_64
+          - os: macos-11
+            bitness: 64
             python: 38
             platform_id: macosx_x86_64
           - os: macos-11
@@ -75,6 +101,10 @@ jobs:
           - os: macos-11
             bitness: 64
             python: 311
+            platform_id: macosx_x86_64
+          - os: macos-11
+            bitness: 64
+            python: 312
             platform_id: macosx_x86_64
 
           # MacOS 64 bit ARM: arm64
@@ -94,9 +124,20 @@ jobs:
             bitness: 64
             python: 311
             platform_id: macosx_arm64
+          - os: macos-11
+            bitness: 64
+            python: 312
+            platform_id: macosx_arm64
+
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Setup tmate session
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+        uses: mxschmitt/action-tmate@v3
+        with:
+          detached: true
 
       - name: Copy to C:\
         if: ${{ runner.os == 'Windows' }}
