@@ -134,7 +134,7 @@ class BuildRDKix(build_ext_orig):
 
         # Clone RDKix from git at rdkix_tag
         check_call(
-            ["git", "clone", "-b", f"{ext.rdkix_tag}", "https://github.com/rdkix/rdkix"]
+            ["git", "clone", "-b", f"{ext.rdkix_tag}", "https://github.com/zetxtech/rdkix"]
         )
 
         # Location of license file
@@ -144,7 +144,7 @@ class BuildRDKix(build_ext_orig):
         os.chdir(str("rdkix"))
 
         if rdkix_tag == "Release_2023_03_2":
-            # Cherry-pick https://github.com/rdkix/rdkix/pull/6485/commits for
+            # Cherry-pick https://github.com/zetxtech/rdkix/pull/6485/commits for
             # correct python install paths on windows 
             check_call(
                 ["git", "config", "--global", "user.email", '"you@example.com"']
@@ -332,7 +332,7 @@ setup(
     url="https://github.com/kuelumbus/rdkix",
     project_urls={
         "RDKix": "http://rdkit.org/",
-        "RDKix on Github": "https://github.com/rdkix/rdkix",
+        "RDKix on Github": "https://github.com/zetxtech/rdkix",
     },
     license="BSD-3-Clause",
     long_description=long_description,
