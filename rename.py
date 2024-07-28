@@ -38,7 +38,7 @@ if __name__ == '__main__':
     replace_keywords(Path.cwd(), 'RDkit', 'RDkix')
     replace_keywords(Path.cwd(), 'rdkix-pypi', 'rdkix')
     replace_keywords(Path.cwd(), 'rdkix.org', 'rdkit.org')
-    replace_keywords(Path.cwd(), 'github.com/rdkix/rdkix/issues', 'github.com/rdkit/rdkit/issues')
+    replace_keywords(Path.cwd(), 'github.com/zetxtech/rdkix/issues', 'github.com/rdkit/rdkit/issues')
     replace_keywords(
         Path.cwd(),
         r'Copy-Item -Path D:\\a\\rdkix\\rdkix -Destination C:\\rdkix -Recurse',
