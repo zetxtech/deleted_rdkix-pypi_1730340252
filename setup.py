@@ -134,7 +134,7 @@ class BuildRDKix(build_ext_orig):
 
         # Clone RDKix from git at rdkix_tag
         check_call(
-            ["git", "clone", "-b", f"{ext.rdkix_tag}", "https://github.com/rdkix/rdkix"]
+            ["git", "clone", "-b", f"{ext.rdkix_tag}", "https://github.com/zetxtech/rdkix"]
         )
 
         # Location of license file
@@ -309,7 +309,7 @@ setup(
     url="https://github.com/kuelumbus/rdkix",
     project_urls={
         "RDKix": "http://rdkit.org/",
-        "RDKix on Github": "https://github.com/rdkix/rdkix",
+        "RDKix on Github": "https://github.com/zetxtech/rdkix",
     },
     license="BSD-3-Clause",
     long_description=long_description,
